@@ -14,7 +14,25 @@ public class User {
 
     private String name;
 
+    private String username;
+
     private String email;
+
+    public String getName() {
+        return name;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public void addTask(Task task) {
         tasks.add(task);
@@ -28,12 +46,12 @@ public class User {
         this.userId = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getEmail() {

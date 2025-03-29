@@ -8,6 +8,7 @@ import Settings from './Settings.jsx'
 import Chat from './Chat.jsx'
 import Feed from './Feed.jsx'
 import Login from "./Login.jsx";
+import AuthCheck from "./AuthCheck.jsx";
 
 const router = createBrowserRouter([
     {
@@ -31,9 +32,14 @@ const router = createBrowserRouter([
         element: <Feed />,
     },
     {
-        path: "login",
+        path: "/login",
         element: <Login />,
+    },
+    {
+        path: "/auth",
+        element: <AuthCheck />,
     }
+
 ]);
 
 createRoot(document.getElementById('root')).render(

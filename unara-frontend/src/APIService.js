@@ -2,8 +2,9 @@ class APIService {
 
     static async createAccount(username) {
         try {
-            const response = await fetch(`${import.meta.env.VITE_URL}/task/add-user?name=${username}&email="testemail@test.com"`, {
+            const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/task/add-user?name=${username}&email="testemail@test.com"`, {
                 method: "POST",
+                credentials: "include",
                 headers: {
                     "Content-Type": "application/json"
                 },
@@ -19,8 +20,10 @@ class APIService {
     }
 
 
+
+
     static async loadTasks(userId, setTasks) {
-        fetch(`${import.meta.env.VITE_URL}/task/get?userId=${userId}`, {
+        fetch(`${import.meta.env.VITE_BACKEND_URL}/api/get?userId=${userId}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded",
@@ -39,7 +42,7 @@ class APIService {
     }
 
     static async addTask(userId, newTask, tasks, setTasks) {
-        fetch(`${import.meta.env.VITE_URL}/task/add?userId=${userId}&title=${newTask.title}&description=${newTask.description}`, {
+        fetch(`${import.meta.env.VITE_BACKEND_URL}/api/add?userId=${userId}&title=${newTask.title}&description=${newTask.description}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -50,7 +53,7 @@ class APIService {
     }
 
     static async editTask(taskId, changeParam, newChange) {
-        fetch(`${import.meta.env.VITE_URL}/task/edit/${taskId}?whatToEdit=${changeParam}&newChange=${newChange}`, {
+        fetch(`${import.meta.env.VITE_BACKEND_URL}/api/edit/${taskId}?whatToEdit=${changeParam}&newChange=${newChange}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json"
@@ -63,7 +66,7 @@ class APIService {
     }
 
     static async deleteTask(taskId, setTasks, tasks) {
-        fetch(`${import.meta.env.VITE_URL}/task/delete/${taskId}`, {
+        fetch(`${import.meta.env.VITE_BACKEND_URL}/api/delete/${taskId}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded",

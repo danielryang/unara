@@ -1,6 +1,5 @@
 import './App.css'
-import React, {useEffect, useState} from 'react'
-import {Link} from "react-router-dom";
+import React, {useEffect, useState } from 'react'
 import Profile from "./Profile.jsx";
 import Settings from "./Settings.jsx";
 import Chat from "./Chat.jsx";
@@ -10,14 +9,25 @@ import Login from "./Login.jsx";
 import APIService from "./APIService.js";
 
 
-//todo: add API-database integration for tasks
 function App() {
+
     const [tasks, setTasks] = useState([])
     const [taskDisplay, showTask] = useState({title: "", id: ""})
     const [screen, setScreen] = useState("tasks")
     const [userId, setUserId] = useState(0)
     const [errorLogin, setErrorLogin] = useState(false)
 
+    // useEffect(() => {
+    //     // Check if the user is already authenticated (e.g., check localStorage, sessionStorage, or a global state)
+    //     const isAuthenticated = localStorage.getItem('isAuthenticated'); // Replace with your actual check
+    //
+    //     if (!isAuthenticated) {
+    //         // If not authenticated, redirect to the backend for authorization
+    //         window.location.href = `${import.meta.env.VITE_URL}`;
+    //         localStorage.setItem('isAuthenticated', 'true');
+    //     }
+    // }, []); // The empty dependency array ensures this effect runs only once when the component mounts.
+    //
 
     const handleLogin = (id) => {
         setUserId(id);
@@ -36,9 +46,11 @@ function App() {
         }
     };
 
+
+
+
     useEffect(() => {
-        APIService.loadTasks(userId, setTasks).then(r =>
-        setErrorLogin(false))
+        APIService.loadTasks(userId, setTasks)
     }, [userId]);
 
 
@@ -59,7 +71,7 @@ function App() {
 
   return (
     <>
-    <div className={"flex"}>
+    <div className="flex">
         <div className={"object-center text-center bg-gray-200 h-screen pt-8 p-2 w-10"}>
             <div className={"flex flex-col space-y-10"}>
                 {/*<Link to = "profile">P</Link>*/}

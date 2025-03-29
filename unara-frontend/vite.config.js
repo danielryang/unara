@@ -12,7 +12,7 @@ export default defineConfig(({ mode }) => {
     plugins: [react(), tailwindcss()],
     server: {
       proxy: {
-        '/api': env.VITE_URL
+        '/api': env.VITE_BACKEND_URL
       }
     }
   }
